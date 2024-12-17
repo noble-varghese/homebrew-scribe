@@ -5,18 +5,24 @@
 class Scribe < Formula
   desc "A fast and flexible text expander"
   homepage "https://github.com/noble-varghese/scribe"
-  version "0.1.22"
+  version "0.1.26"
   license "MIT"
-  depends_on :linux
+  depends_on :macos
 
   if Hardware::CPU.intel?
-    if Hardware::CPU.is_64_bit?
-      url "https://github.com/noble-varghese/scribe/releases/download/v0.1.22/scribe_Linux_x86_64.tar.gz", using: CurlDownloadStrategy
-      sha256 "cfd6bde23fc07ae4063d1229f02a09c0067e56f312e3cde4a48d71a8f7a1d162"
+    url "https://github.com/noble-varghese/scribe/releases/download/v0.1.26/scribe_Darwin_x86_64.tar.gz", using: CurlDownloadStrategy
+    sha256 "cf60152df62cd9cdd7ec5edd5cd67dd0b506e974a6a176cc8ca3e1f2ef1a39af"
 
-      def install
-        bin.install "scribe"
-      end
+    def install
+      bin.install "scribe"
+    end
+  end
+  if Hardware::CPU.arm?
+    url "https://github.com/noble-varghese/scribe/releases/download/v0.1.26/scribe_Darwin_arm64.tar.gz", using: CurlDownloadStrategy
+    sha256 "08afb042e246c58bbe3e48d2aff72b4681f09d7a007ecc8f15b462b2e6f8689e"
+
+    def install
+      bin.install "scribe"
     end
   end
 
